@@ -40,3 +40,21 @@ let orders = [
 ];
 orders.forEach(order => {
     let canProcess = true;
+
+
+    //skips to part 5 
+
+    let totalInventoryValue = inventory.reduce((total, item) => {
+    return total + item.price * item.quantity;
+}, 0);
+console.log(`Total inventory value: $${totalInventoryValue.toFixed(2)}`);
+
+const lowStockItems = inventory.filter(item => item.quantity <= 5);
+console.log("Low-stock items:");
+lowStockItems.forEach(item => {
+    console.log(`${item.sku} | ${item.name} | Stock: ${item.quantity}`);
+});
+
+const priceList = inventory.map(item => `${item.sku} — $${item.price.toFixed(2)}`);
+console.log("Price list:");
+priceList.forEach(price => console.log(price));
